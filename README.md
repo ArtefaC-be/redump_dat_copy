@@ -1,6 +1,6 @@
 # redump_dat_copy
 
-This program downloads the .dat files hosted on http://old.redump.info/downloads.
+This program downloads the .dat files hosted on http://redump.org/downloads.
 After downloading each file, it calculates the SHA256 checksum.
 
 Please note:

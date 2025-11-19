@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import requests
+import re
 from os.path import isfile
 from os import scandir
 import hashlib
@@ -9,7 +10,7 @@ from datetime import datetime
 from urllib.parse import unquote
 
 
-MAIN_URL = "https://old.redump.info"
+MAIN_URL = "http://redump.org"
 TIMEOUT=120
 
 DESTINATION_PATH = "./files"
@@ -22,42 +23,37 @@ class Redump_Dat_Copy:
 
     def full(self):
         print("Full operation...")
-        final_urls = self.get_moved_http_request()
-        self.download_files(final_urls)
-        self.download_files(final_urls)
+        self.download_files()
         self.calcsha256()
         self.stampdatetime()
 
-    def get_moved_http_request(self):
 
+    def download_files(self):
         with open('urls.txt','r') as f:
             urls = [line.strip() for line in f]
-        
-        newlocation = []
-        for url in urls:
-            print(f"Processing {url}")
-            with requests.Session() as s:
-                s.headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0"}
-                r = s.get(url,allow_redirects=False)
-                newlocation.append(f"{MAIN_URL}/{r.headers['Location']}")
-        return newlocation
 
-
-    def download_files(self,urls):
         for url in urls:
-            local_filename = url.split('/')[-1]
-            local_filename = unquote(local_filename)
-            print(local_filename)
-            if isfile(f"{DESTINATION_PATH}/{local_filename}"):
-                print("-> Already exists!")
-                continue
-            else:
-                print("-> [DOWNLOADING] Doesn't exist!")
-                with requests.get(url, stream=True) as r:
-                    r.raise_for_status()
+            print("Processing:", url)
+            with requests.get(url, stream=True, timeout=TIMEOUT) as r:
+                r.raise_for_status()
+
+                content_disposition = r.headers['Content-Disposition']
+                local_filename = re.search(r'".*"', content_disposition).group(0).replace('"','')
+                print(f"-> name fetched: {local_filename}")
+                # attachment; filename="Acorn - Archimedes - Cuesheets (77) (2025-10-23 18-11-28).zip"
+
+                if isfile(f"{DESTINATION_PATH}/{local_filename}"):
+                    print("-> The file already exists!")
+
+                else:
+                    print("-> [DOWNLOADING] The file doesn't exist, let's download!")
                     with open(f"{DESTINATION_PATH}/{local_filename}", 'wb') as f:
                         for chunk in r.iter_content(chunk_size=8192): 
+                            # If you have chunk encoded response uncomment if
+                            # and set chunk_size parameter to None.
+                            #if chunk: 
                             f.write(chunk)
+
 
     def calcsha256(self):
         print("Compute the SHA256SUM for each files...")
@@ -98,8 +94,7 @@ def main():
         case "all":
             redump_dat_copy.full()
         case "download":
-            final_urls = redump_dat_copy.get_moved_http_request()
-            redump_dat_copy.download_files(final_urls)
+            redump_dat_copy.download_files()
         case "calcsum":
             redump_dat_copy.calcsha256()
         case "stamp":
