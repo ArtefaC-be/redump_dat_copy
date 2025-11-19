@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import requests
-import re
 from os.path import isfile
 from os import scandir
 import hashlib
@@ -23,51 +22,24 @@ class Redump_Dat_Copy:
 
     def full(self):
         print("Full operation...")
-        self.get_source_page()
-        urls = self.extract_url()
-        final_urls = self.get_moved_http_request(urls)
+        final_urls = self.get_moved_http_request()
+        self.download_files(final_urls)
         self.download_files(final_urls)
         self.calcsha256()
         self.stampdatetime()
 
-    def get_source_page(self):
-        # Get the source page and write into source.text
-        print(f"Fetch the page source ({MAIN_URL})")
-        with requests.Session() as s:
-            s.headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0"}
-            r = s.get(f"{MAIN_URL}/downloads",timeout=TIMEOUT)
-        with open("source.text",'w') as f:
-            f.write(r.text)
+    def get_moved_http_request(self):
 
-    def extract_url(self):
-        content = None
-        with open("source.text", 'r') as f:
-            content = f.read()
-
-        # Get the table that contains all the url
-        main_table = re.search(r'<table .*</table>',content,flags=re.DOTALL).group(0)
-
-        # Search all the link in the table
-        pattern = re.compile(r'/[a-z]+\/[a-z-]+/')
-        pathes = pattern.findall(main_table)
-        urls = []
-        for path in pathes:
-            urls.append(f"{MAIN_URL}{path}")
-
-        # Print finded urls
-        for url in urls:
-            print(url)
-        return urls
-
-    def get_moved_http_request(self,urls):
-
+        with open('urls.txt','r') as f:
+            urls = [line.strip() for line in f]
+        
         newlocation = []
         for url in urls:
+            print(f"Processing {url}")
             with requests.Session() as s:
                 s.headers = {"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:144.0) Gecko/20100101 Firefox/144.0"}
                 r = s.get(url,allow_redirects=False)
                 newlocation.append(f"{MAIN_URL}/{r.headers['Location']}")
-
         return newlocation
 
 
@@ -79,10 +51,8 @@ class Redump_Dat_Copy:
             if isfile(f"{DESTINATION_PATH}/{local_filename}"):
                 print("-> Already exists!")
                 continue
-
             else:
                 print("-> [DOWNLOADING] Doesn't exist!")
-                # NOTE the stream=True parameter below
                 with requests.get(url, stream=True) as r:
                     r.raise_for_status()
                     with open(f"{DESTINATION_PATH}/{local_filename}", 'wb') as f:
@@ -119,7 +89,7 @@ def main():
                     description='This program fetch all the data files from old.redump.info.',
                     epilog='Created by ArtefaC')
 
-    parser.add_argument('function', default='all', help="can be 'all' 'source' 'url' 'download' 'calcsum' 'stamp'")
+    parser.add_argument('function', default='all', help="can be 'all' 'download' 'calcsum' 'stamp'")
     args = parser.parse_args()
 
     redump_dat_copy = Redump_Dat_Copy()
@@ -127,13 +97,8 @@ def main():
     match args.function:
         case "all":
             redump_dat_copy.full()
-        case "source":
-            redump_dat_copy.get_source_page()
-        case "url":
-            redump_dat_copy.extract_url()
         case "download":
-            urls = redump_dat_copy.extract_url()
-            final_urls = redump_dat_copy.get_moved_http_request(urls)
+            final_urls = redump_dat_copy.get_moved_http_request()
             redump_dat_copy.download_files(final_urls)
         case "calcsum":
             redump_dat_copy.calcsha256()
