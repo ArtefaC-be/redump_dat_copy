@@ -1,38 +1,9 @@
-#!/usr/bin/env python3
+from .system import System
+from .systemcategory import SystemCategory
 from enum import Enum
-from dataclasses import dataclass
-from typing import Optional
-
-
-@dataclass
-class HumanReadable():
-    LongName: str
-    ShortName: Optional[str] = None
-    Category: Optional[str] = None
-
-class SystemCategory(Enum):
-    NONE = 0
-    DiscBasedConsole = HumanReadable(LongName = "Disc-Based Consoles")
-    OtherConsole = HumanReadable(LongName = "Other Consoles")
-    Computer = HumanReadable(LongName = "Computers")
-    Arcade = HumanReadable(LongName = "Arcade")
-    Other = HumanReadable(LongName = "Other")
-
-@dataclass
-class System(HumanReadable):
-    Available: Optional[bool] = True
-    Category: Optional[SystemCategory]
-    IsBanned: Optional[str] = False
-    HasDat: Optional[bool] = False
-    HasCues: Optional[bool] = False
-    HasDkeys: Optional[bool] = False
-    HasGdi: Optional[bool] = False
-    HasKeys: Optional[bool] = False
-    HasLsd: Optional[bool] = False
-    HasSbi: Optional[bool] = False
 
 class RedumpSystem(Enum):
-    # BIOS 
+    # BIOS
     MicrosoftXboxBIOS = System(LongName = "Microsoft Xbox (BIOS)", ShortName = "xbox-bios", HasDat = True)
     NintendoGameCubeBIOS = System(LongName = "Nintendo GameCube (BIOS)", ShortName = "gc-bios", HasDat = True)
     SonyPlayStationBIOS = System(LongName = "Sony PlayStation (BIOS)", ShortName = "psx-bios", HasDat = True)
