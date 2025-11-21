@@ -32,6 +32,7 @@ class Redump_Dat_Copy:
                 self.download_file(full_url)
         
         self.calcsha256()
+        self.stampdatetime()
 
     def download_file(self,url):
             print("Processing:", url)
