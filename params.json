@@ -1,0 +1,5 @@
+{
+    "main_url": "http://redump.org",
+    "timeout": 120,
+    "destination_path": "./files"
+}

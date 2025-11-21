@@ -1,0 +1,297 @@
+{
+    "Acorn Archimedes": {
+        "Cuesheets": "/cues/arch/",
+        "Datfile": "/datfile/arch/"
+    },
+    "Apple Macintosh": {
+        "Cuesheets": "/cues/mac/",
+        "Datfile": "/datfile/mac/",
+        "SBI": "/sbi/mac/"
+    },
+    "Atari Jaguar CD Interactive Multimedia System": {
+        "Cuesheets": "/cues/ajcd/",
+        "Datfile": "/datfile/ajcd/"
+    },
+    "Audio CD": {
+        "Cuesheets": "/cues/audio-cd/",
+        "Datfile": "/datfile/audio-cd/"
+    },
+    "Bandai Pippin": {
+        "Cuesheets": "/cues/pippin/",
+        "Datfile": "/datfile/pippin/"
+    },
+    "Bandai Playdia Quick Interactive System": {
+        "Cuesheets": "/cues/qis/",
+        "Datfile": "/datfile/qis/"
+    },
+    "BD-Video": {
+        "Datfile": "/datfile/bd-video/"
+    },
+    "Commodore Amiga CD": {
+        "Cuesheets": "/cues/acd/",
+        "Datfile": "/datfile/acd/"
+    },
+    "Commodore Amiga CD32": {
+        "Cuesheets": "/cues/cd32/",
+        "Datfile": "/datfile/cd32/"
+    },
+    "Commodore Amiga CDTV": {
+        "Cuesheets": "/cues/cdtv/",
+        "Datfile": "/datfile/cdtv/"
+    },
+    "DVD-Video": {
+        "Datfile": "/datfile/dvd-video/"
+    },
+    "Fujitsu FM Towns series": {
+        "Cuesheets": "/cues/fmt/",
+        "Datfile": "/datfile/fmt/"
+    },
+    "funworld Photo Play": {
+        "Cuesheets": "/cues/fpp/",
+        "Datfile": "/datfile/fpp/"
+    },
+    "Hasbro VideoNow": {
+        "Cuesheets": "/cues/hvn/",
+        "Datfile": "/datfile/hvn/"
+    },
+    "Hasbro VideoNow Color": {
+        "Cuesheets": "/cues/hvnc/",
+        "Datfile": "/datfile/hvnc/"
+    },
+    "Hasbro VideoNow Jr.": {
+        "Cuesheets": "/cues/hvnjr/",
+        "Datfile": "/datfile/hvnjr/"
+    },
+    "Hasbro VideoNow XP": {
+        "Cuesheets": "/cues/hvnxp/",
+        "Datfile": "/datfile/hvnxp/"
+    },
+    "HD DVD-Video": {
+        "Datfile": "/datfile/hddvd-video/"
+    },
+    "IBM PC compatible": {
+        "Cuesheets": "/cues/pc/",
+        "Datfile": "/datfile/pc/",
+        "SBI": "/sbi/pc/"
+    },
+    "Incredible Technologies Eagle": {
+        "Cuesheets": "/cues/ite/",
+        "Datfile": "/datfile/ite/"
+    },
+    "Konami e-Amusement": {
+        "Cuesheets": "/cues/kea/",
+        "Datfile": "/datfile/kea/"
+    },
+    "Konami FireBeat": {
+        "Cuesheets": "/cues/kfb/",
+        "Datfile": "/datfile/kfb/"
+    },
+    "Konami M2": {
+        "Cuesheets": "/cues/km2/",
+        "Datfile": "/datfile/km2/"
+    },
+    "Konami System 573": {
+        "Cuesheets": "/cues/ks573/",
+        "Datfile": "/datfile/ks573/"
+    },
+    "Konami System GV": {
+        "Cuesheets": "/cues/ksgv/",
+        "Datfile": "/datfile/ksgv/"
+    },
+    "Konami Twinkle": {},
+    "Mattel Fisher-Price iXL": {
+        "Cuesheets": "/cues/ixl/",
+        "Datfile": "/datfile/ixl/"
+    },
+    "Mattel HyperScan": {
+        "Cuesheets": "/cues/hs/",
+        "Datfile": "/datfile/hs/"
+    },
+    "Memorex Visual Information System": {
+        "Cuesheets": "/cues/vis/",
+        "Datfile": "/datfile/vis/"
+    },
+    "Microsoft Xbox": {
+        "Cuesheets": "/cues/xbox/",
+        "Datfile": "/datfile/xbox/",
+        "BIOS Datfile": "/datfile/xbox-bios/"
+    },
+    "Microsoft Xbox 360": {
+        "Cuesheets": "/cues/xbox360/",
+        "Datfile": "/datfile/xbox360/"
+    },
+    "Microsoft Xbox One": {
+        "Datfile": "/datfile/xboxone/"
+    },
+    "Microsoft Xbox Series X": {
+        "Datfile": "/datfile/xboxsx/"
+    },
+    "Namco \u00b7 Sega \u00b7 Nintendo Triforce": {
+        "Cuesheets": "/cues/trf/",
+        "GDI Files": "/gdi/trf/",
+        "Datfile": "/datfile/trf/"
+    },
+    "Namco System 12": {},
+    "Namco System 246": {
+        "Cuesheets": "/cues/ns246/",
+        "Datfile": "/datfile/ns246/"
+    },
+    "Navisoft Naviken 2.1": {
+        "Cuesheets": "/cues/navi21/",
+        "Datfile": "/datfile/navi21/"
+    },
+    "NEC PC Engine CD & TurboGrafx CD": {
+        "Cuesheets": "/cues/pce/",
+        "Datfile": "/datfile/pce/"
+    },
+    "NEC PC-88 series": {
+        "Cuesheets": "/cues/pc-88/",
+        "Datfile": "/datfile/pc-88/"
+    },
+    "NEC PC-98 series": {
+        "Cuesheets": "/cues/pc-98/",
+        "Datfile": "/datfile/pc-98/"
+    },
+    "NEC PC-FX & PC-FXGA": {
+        "Cuesheets": "/cues/pc-fx/",
+        "Datfile": "/datfile/pc-fx/"
+    },
+    "Neo Geo CD": {
+        "Cuesheets": "/cues/ngcd/",
+        "Datfile": "/datfile/ngcd/"
+    },
+    "Nintendo GameCube": {
+        "Datfile": "/datfile/gc/",
+        "BIOS Datfile": "/datfile/gc-bios/"
+    },
+    "Nintendo Wii": {
+        "Datfile": "/datfile/wii/"
+    },
+    "Nintendo Wii U": {
+        "Datfile": "/datfile/wiiu/",
+        "HEX": "/keys/wiiu/"
+    },
+    "Palm OS": {
+        "Cuesheets": "/cues/palm/",
+        "Datfile": "/datfile/palm/"
+    },
+    "Panasonic 3DO Interactive Multiplayer": {
+        "Cuesheets": "/cues/3do/",
+        "Datfile": "/datfile/3do/"
+    },
+    "Panasonic M2": {
+        "Cuesheets": "/cues/m2/",
+        "Datfile": "/datfile/m2/"
+    },
+    "Philips CD-i": {
+        "Cuesheets": "/cues/cdi/",
+        "Datfile": "/datfile/cdi/"
+    },
+    "Photo CD": {
+        "Cuesheets": "/cues/photo-cd/",
+        "Datfile": "/datfile/photo-cd/"
+    },
+    "PlayStation GameShark Updates": {
+        "Cuesheets": "/cues/psxgs/",
+        "Datfile": "/datfile/psxgs/"
+    },
+    "Pocket PC": {
+        "Cuesheets": "/cues/ppc/",
+        "Datfile": "/datfile/ppc/"
+    },
+    "Sega Chihiro": {
+        "Cuesheets": "/cues/chihiro/",
+        "GDI Files": "/gdi/chihiro/",
+        "Datfile": "/datfile/chihiro/"
+    },
+    "Sega Dreamcast": {
+        "Cuesheets": "/cues/dc/",
+        "GDI Files": "/gdi/dc/",
+        "Datfile": "/datfile/dc/"
+    },
+    "Sega Lindbergh": {
+        "Datfile": "/datfile/lindbergh/"
+    },
+    "Sega Mega CD & Sega CD": {
+        "Cuesheets": "/cues/mcd/",
+        "Datfile": "/datfile/mcd/"
+    },
+    "Sega Naomi": {
+        "Cuesheets": "/cues/naomi/",
+        "GDI Files": "/gdi/naomi/",
+        "Datfile": "/datfile/naomi/"
+    },
+    "Sega Naomi 2": {
+        "Cuesheets": "/cues/naomi2/",
+        "GDI Files": "/gdi/naomi2/",
+        "Datfile": "/datfile/naomi2/"
+    },
+    "Sega Prologue 21 Multimedia Karaoke System": {
+        "Cuesheets": "/cues/sp21/",
+        "Datfile": "/datfile/sp21/"
+    },
+    "Sega RingEdge": {
+        "Datfile": "/datfile/sre/"
+    },
+    "Sega RingEdge 2": {
+        "Datfile": "/datfile/sre2/"
+    },
+    "Sega Saturn": {
+        "Cuesheets": "/cues/ss/",
+        "Datfile": "/datfile/ss/"
+    },
+    "Sega Titan Video": {},
+    "Sharp X68000": {
+        "Cuesheets": "/cues/x68k/",
+        "Datfile": "/datfile/x68k/"
+    },
+    "Sony PlayStation": {
+        "Cuesheets": "/cues/psx/",
+        "Datfile": "/datfile/psx/",
+        "SBI": "/sbi/psx/",
+        "BIOS Datfile": "/datfile/psx-bios/"
+    },
+    "Sony PlayStation 2": {
+        "Cuesheets": "/cues/ps2/",
+        "Datfile": "/datfile/ps2/",
+        "BIOS Datfile": "/datfile/ps2-bios/"
+    },
+    "Sony PlayStation 3": {
+        "Cuesheets": "/cues/ps3/",
+        "Datfile": "/datfile/ps3/",
+        "HEX": "/keys/ps3/",
+        "TXT": "/dkeys/ps3/"
+    },
+    "Sony PlayStation 4": {
+        "Datfile": "/datfile/ps4/"
+    },
+    "Sony PlayStation 5": {
+        "Datfile": "/datfile/ps5/"
+    },
+    "Sony PlayStation Portable": {
+        "Datfile": "/datfile/psp/"
+    },
+    "TAB-Austria Quizard": {
+        "Cuesheets": "/cues/quizard/",
+        "Datfile": "/datfile/quizard/"
+    },
+    "Tao iKTV": {},
+    "Tomy Kiss-Site": {
+        "Cuesheets": "/cues/ksite/",
+        "Datfile": "/datfile/ksite/"
+    },
+    "Video CD": {
+        "Cuesheets": "/cues/vcd/",
+        "Datfile": "/datfile/vcd/"
+    },
+    "VM Labs NUON": {
+        "Datfile": "/datfile/nuon/"
+    },
+    "VTech V.Flash & V.Smile Pro": {
+        "Cuesheets": "/cues/vflash/",
+        "Datfile": "/datfile/vflash/"
+    },
+    "ZAPiT Games Game Wave Family Entertainment System": {
+        "Datfile": "/datfile/gamewave/"
+    }
+}
