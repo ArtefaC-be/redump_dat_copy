@@ -1,14 +1,12 @@
-#!/usr/bin/env python3
-
 import requests
 import re
 from os.path import isfile
 from os import scandir
 import hashlib
-import argparse
 from datetime import datetime
 from urllib.parse import unquote
 
+from redump_obj import *
 
 MAIN_URL = "http://redump.org"
 TIMEOUT=120
@@ -16,17 +14,19 @@ TIMEOUT=120
 DESTINATION_PATH = "./files"
 
 
-
 class Redump_Dat_Copy:
-    def ___init__(self):
-        pass
+    def __init__(self):
+        print("Hello world!")
+        print(RedumpSystem)
+        for x in RedumpSystem:
+            print(x, f"HasDat: {x.value.HasDat}", f"IsBanned: {x.value.IsBanned}", x.value.LongName, x.value.ShortName)
+
 
     def full(self):
         print("Full operation...")
         self.download_files()
         self.calcsha256()
         self.stampdatetime()
-
 
     def download_files(self):
         with open('urls.txt','r') as f:
@@ -78,28 +78,3 @@ class Redump_Dat_Copy:
             datenow = datetime.now()
             f.write(f"{datenow.strftime('%d/%m/%y %Hh%Mm%Ss')}\n")
     
-
-def main():
-    parser = argparse.ArgumentParser(
-                    prog='redump_dat_copy.py',
-                    description='This program fetch all the data files from old.redump.info.',
-                    epilog='Created by ArtefaC')
-
-    parser.add_argument('function', default='all', help="can be 'all' 'download' 'calcsum' 'stamp'")
-    args = parser.parse_args()
-
-    redump_dat_copy = Redump_Dat_Copy()
-
-    match args.function:
-        case "all":
-            redump_dat_copy.full()
-        case "download":
-            redump_dat_copy.download_files()
-        case "calcsum":
-            redump_dat_copy.calcsha256()
-        case "stamp":
-            redump_dat_copy.stampdatetime()
-
-if __name__ == "__main__":
-    main()
-
