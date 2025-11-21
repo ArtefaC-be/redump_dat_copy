@@ -1,3 +1,6 @@
-files/
 .venv
-source.text
+files/*.zip
+files/*.SHA256SUM
+files/*.dat
+*__pycache__
+params.json
