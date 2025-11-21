@@ -20,7 +20,7 @@ If you want to build your own systems.json file, you can use the extract_from_ta
 
 **Q: Why did you rewrite sabretool fonctionnaly?**
 
-**A:** Beceause I don't want runs exe program on my Linux server
+**A:** Because I don’t want to run .exe programs on my Linux server.
 
 
 Please note:
