@@ -37,7 +37,6 @@ def main():
         print(json.dumps(output,indent=4),file=f)
 
 
-
     print(json.dumps(output,indent=4))
 
 
