@@ -99,8 +99,8 @@ class Redump_Dat_Copy:
                 print('-> SHA256SUM:', sha256sum_result)
 
     def stampdatetime(self):
-        print("Timestamping last_update.txt...")
-        with open(f"{self.detination_path}/last_update.txt",'w') as f:
+        print("Timestamping _last_update.txt...")
+        with open(f"{self.detination_path}/_last_update.txt",'w') as f:
             datenow = datetime.now()
             f.write(f"{datenow.strftime('%d/%m/%y %Hh%Mm%Ss')}\n")
 
