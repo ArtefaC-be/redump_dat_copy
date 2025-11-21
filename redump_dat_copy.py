@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 
 import json
-from pprint import pprint
 import requests
 import re
 from os.path import isfile
 from os import scandir
+from datetime import datetime
 
 import hashlib
 
@@ -17,9 +17,11 @@ class Redump_Dat_Copy:
             self.systems = json.loads(f.read())
 
         self.main_url = params['main_url']
+        self.login_url = params['login_url']
         self.timeout = params['timeout']
+        self.__username = params['username']
+        self.__password = params['password']
         self.detination_path = params['destination_path']
-        self.run()
 
     def run(self):
         for system in self.systems:
@@ -33,7 +35,7 @@ class Redump_Dat_Copy:
 
     def download_file(self,url):
             print("Processing:", url)
-            with requests.get(url, stream=True, timeout=self.timeout) as r:
+            with requests.get(url, stream=True, timeout=self.timeout, cookies=self.__cookies) as r:
                 try:
                  r.raise_for_status()
                 except:
@@ -62,6 +64,23 @@ class Redump_Dat_Copy:
                             #if chunk: 
                             f.write(chunk)
 
+    def login(self):
+        with requests.get(self.login_url, timeout=self.timeout) as r:
+            cookies = r.cookies
+            self.__csrf_token = (re.search(r'<input type="hidden" name="csrf_token" value="(.*?)" />',r.text).group(1))
+
+        data = {
+            "req_username": self.__username,
+            "req_password": self.__password,
+            "form_sent":	"1",
+            "redirect_url": "http://forum.redump.org/",
+            "csrf_token":	self.__csrf_token,
+            "login":	"Login"
+        }
+        with requests.post(self.login_url, timeout=self.timeout, data=data, cookies=cookies) as r:
+            self.__cookies = r.cookies           
+
+
     def calcsha256(self):
         print("Compute the SHA256SUM for each files...")
         for file in scandir(self.detination_path):
@@ -75,13 +94,21 @@ class Redump_Dat_Copy:
                         block = source.read(2**16)
                 sha256sum_result = sha256sum.hexdigest()
                 # Save the sum in .SHA256SUM file.
-                with open(f"{DESTINATION_PATH}/{file.name}.SHA256SUM", 'w') as f:
+                with open(f"{self.detination_path}/{file.name}.SHA256SUM", 'w') as f:
                     print(f"{sha256sum_result}\t {file.name}", file=f)
                 print('-> SHA256SUM:', sha256sum_result)
+
+    def stampdatetime(self):
+        print("Timestamping last_update.txt...")
+        with open(f"{self.detination_path}/last_update.txt",'w') as f:
+            datenow = datetime.now()
+            f.write(f"{datenow.strftime('%d/%m/%y %Hh%Mm%Ss')}\n")
 
 def main():
 
     redump_dat_copy = Redump_Dat_Copy()
+    redump_dat_copy.login()
+    redump_dat_copy.run()
 
 if __name__ == "__main__":
     main()
